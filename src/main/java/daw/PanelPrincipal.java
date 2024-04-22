@@ -56,7 +56,7 @@ public class PanelPrincipal extends JPanel implements ActionListener {
         Object o = ae.getSource();
         // Si es un botón
         if (o instanceof JButton) {
-            areaTexto.setText(operandos[0] + operandos[1] + operandos[2]);
+            
             String dato = ((JButton) o).getText();
             if (contador > 2) {
                 contador = 0;
@@ -64,21 +64,19 @@ public class PanelPrincipal extends JPanel implements ActionListener {
 
             if(dato.equalsIgnoreCase("=")&&operandos[0]!=null&&operandos[1]!=null&&operandos[2]!=null){
                 
-            areaTexto.setText("haz la cuenta!");
+            hacerCuenta();
+            presionarC();
             }
             if (dato.equalsIgnoreCase("c")){
-                operandos[0]=null;
-                operandos[1]=null;
-                operandos[2]=null;
-                areaTexto.setText(operandos[0] + operandos[1] + operandos[2]);
-                contador=0;
+               presionarC();
+               mostrarTexto();
             }
             
             switch (contador) {
                 case 0:
                     if(dato.matches("[0-9]")){
                         operandos[0] = dato;
-                        areaTexto.setText(operandos[0] + operandos[1] + operandos[2]);
+                        mostrarTexto();
                         
                     }else{
                         contador--;
@@ -89,7 +87,7 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                     if(dato.equalsIgnoreCase("+")||dato.equalsIgnoreCase("-")
                             ||dato.equalsIgnoreCase("/")||dato.equalsIgnoreCase("*")){
                         operandos[1] = dato;
-                        areaTexto.setText(operandos[0] + operandos[1] + operandos[2]);
+                        mostrarTexto();
                         
                     }else{
                         contador--;
@@ -99,7 +97,7 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                 case 2:
                     if(dato.matches("[0-9]")){
                         operandos[2] = dato;
-                        areaTexto.setText(operandos[0] + operandos[1] + operandos[2]);
+                        mostrarTexto();
                         
                     }else{
                         contador--;
@@ -115,7 +113,56 @@ public class PanelPrincipal extends JPanel implements ActionListener {
 
     }
     
+    private void hacerCuenta(){
+        
+        double dato1=Integer.parseInt(operandos[0]);
+        double dato2=Integer.parseInt(operandos[2]);
+        switch (operandos[1]) {
+            case "+":
+                areaTexto.setText(String.valueOf(dato1+dato2));
+                break;
+            case "-":
+                areaTexto.setText(String.valueOf(dato1-dato2));
+                break;
+            case "/":
+                areaTexto.setText(String.valueOf(dato1/dato2));
+                break;
+            case "*":
+                areaTexto.setText(String.valueOf(dato1*dato2));
+                break;
+                
+        }
+        
+       
+        
+    }
+     private void mostrarTexto(){
+            String texto1,texto2,texto3;
+            texto1=operandos[0];
+            texto2=operandos[1];
+            texto3=operandos[2];        
+            if (texto1==null){
+                texto1="";
+            }
+            if (texto2==null){
+                texto2="";
+            }
+            if (texto3==null){
+                texto3="";
+            }
+            
+            areaTexto.setText(texto1 + texto2 + texto3);
+            
+        }
+        
     
+     private void presionarC(){
+         operandos[0]=null;
+                operandos[1]=null;
+                operandos[2]=null;
+                contador=0;
+         
+     }
 }
 
 
