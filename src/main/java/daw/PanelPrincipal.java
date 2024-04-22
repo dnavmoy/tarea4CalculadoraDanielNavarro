@@ -72,14 +72,22 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                mostrarTexto();
             }
             
+            
+            
             switch (contador) {
                 case 0:
                     if(dato.matches("[0-9]")){
-                        operandos[0] = dato;
+                        operandos[0] = operandos[0].concat(dato);
                         mostrarTexto();
                         
                     }else{
-                        contador--;
+                        if(dato.equalsIgnoreCase("+")||dato.equalsIgnoreCase("-")
+                            ||dato.equalsIgnoreCase("/")||dato.equalsIgnoreCase("*")){
+                        operandos[1] = dato;
+                        mostrarTexto();
+                        contador++;
+                    }
+                        
                     }
                     
                     break;
@@ -88,7 +96,7 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                             ||dato.equalsIgnoreCase("/")||dato.equalsIgnoreCase("*")){
                         operandos[1] = dato;
                         mostrarTexto();
-                        
+                        contador++;
                     }else{
                         contador--;
                     }
@@ -109,7 +117,7 @@ public class PanelPrincipal extends JPanel implements ActionListener {
         }
 
         
-        contador++;
+        
 
     }
     
