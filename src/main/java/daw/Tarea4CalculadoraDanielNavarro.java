@@ -4,6 +4,8 @@
 
 package daw;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author daniel
@@ -11,6 +13,15 @@ package daw;
 public class Tarea4CalculadoraDanielNavarro {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        JFrame frame = new JFrame("Calculadora");
+    	frame.setBounds(250, 250, 0, 0);
+    	frame.add(new PanelPrincipal());
+   	 
+    	frame.setVisible(true);
+    	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    	frame.pack();
+   	 
+	}
+
     }
-}
+
