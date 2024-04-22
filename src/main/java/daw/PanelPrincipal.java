@@ -28,6 +28,7 @@ public class PanelPrincipal extends JPanel implements ActionListener {
     public PanelPrincipal() {
         initComponents();
         tipoOperacion = -1; // No hay operaciones en la calculadora
+        contador=0;
     }
 
     private void initComponents() {
@@ -55,26 +56,51 @@ public class PanelPrincipal extends JPanel implements ActionListener {
         Object o = ae.getSource();
         // Si es un botón
         if (o instanceof JButton) {
-            String dato = ((JButton) o ).getText();
-            if(contador>2){
-                contador=0;
+            areaTexto.setText(operandos[0] + operandos[1] + operandos[2]);
+            String dato = ((JButton) o).getText();
+            if (contador > 2) {
+                contador = 0;
             }
+
             switch (contador) {
                 case 0:
+                    if(dato.matches("[0-9]")){
+                        operandos[0] = dato;
+                        areaTexto.setText(operandos[0] + operandos[1] + operandos[2]);
+                        
+                    }else{
+                        contador--;
+                    }
                     
-                   
                     break;
                 case 1:
+                    if(dato.equalsIgnoreCase("+")){
+                        operandos[1] = dato;
+                        areaTexto.setText(operandos[0] + operandos[1] + operandos[2]);
+                        
+                    }else{
+                        contador--;
+                    }
+                    
                     break;
                 case 2:
+                    if(dato.matches("[0-9]")){
+                        operandos[2] = dato;
+                        areaTexto.setText(operandos[0] + operandos[1] + operandos[2]);
+                        
+                    }else{
+                        contador--;
+                    }
                     break;
-                
             }
-            operandos[contador++] = ((JButton) o ).getText();
             
-            areaTexto.setText(operandos[0]+operandos[1]+operandos[2]);
 
         }
-        }
+
+        
+        contador++;
 
     }
+}
+
+
