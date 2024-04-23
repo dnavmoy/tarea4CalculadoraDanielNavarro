@@ -16,22 +16,23 @@ import javax.swing.JTextArea;
  *
  * @author daniel
  */
-public class PanelPrincipal extends JPanel implements ActionListener {
-    
+public class PanelPrincipal extends JPanel implements ActionListener{
+
     private PanelBotones botonera;
     private JTextArea areaTexto;
-    //private int tipoOperacion;
+    private int tipoOperacion;
     private String[] operandos = new String[3];
     private static int contador;
-    //private static String operador;
+    private static String operador;
     private static double resultado;
-    
+
     public PanelPrincipal() {
         initComponents();
-        //tipoOperacion = -1; // No hay operaciones en la calculadora
+        tipoOperacion = -1; // No hay operaciones en la calculadora
         contador = 0;
+
     }
-    
+
     private void initComponents() {
         // Creamos el panel de botones
         botonera = new PanelBotones();
@@ -49,8 +50,10 @@ public class PanelPrincipal extends JPanel implements ActionListener {
             boton.addActionListener(this);
         }
         
+        
+
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent ae) {
         // Se obtiene el objeto que desencadena el evento
@@ -58,14 +61,14 @@ public class PanelPrincipal extends JPanel implements ActionListener {
 
         // Si es un botón
         if (o instanceof JButton) {
-            
+
             String dato = ((JButton) o).getText();
             if (contador > 2) {
                 contador = 0;
             }
-            
+
             if (dato.equalsIgnoreCase("=") && operandos[0] != null && operandos[1] != null && operandos[2] != null) {
-                
+
                 hacerCuenta();
                 presionarC();
                 operandos[0] = areaTexto.getText();
@@ -74,11 +77,11 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                 presionarC();
                 mostrarTexto();
             }
-            
+
             switch (contador) {
                 case 0:
                     if (dato.matches("[0-9]")) {
-                        if (operandos[0] != null && resultado != Double.parseDouble(operandos[0])) {                            
+                        if (operandos[0] != null && resultado != Double.parseDouble(operandos[0])) {
                             operandos[0] = operandos[0] + dato;
                             mostrarTexto();
                         } else {
@@ -92,9 +95,9 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                             mostrarTexto();
                             contador = 2;
                         }
-                        
+
                     }
-                    
+
                     break;
                 case 1:
                     if (dato.equalsIgnoreCase("+") || dato.equalsIgnoreCase("-")
@@ -105,7 +108,7 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                     } else {
                         contador--;
                     }
-                    
+
                     break;
                 case 2:
                     if (dato.matches("[0-9]")) {
@@ -121,18 +124,20 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                         operandos[0] = areaTexto.getText();
                         operandos[1] = dato;
                         operandos[2] = null;
+                        mostrarTexto();
+                        contador = 2;
                     }
                     break;
             }
-            
+
         }
-        
+
     }
-    
+
     private double hacerCuenta() {
-        
+
         double dato1 = Double.parseDouble(operandos[0]);
-        
+
         double dato2 = Double.parseDouble(operandos[2]);
         switch (operandos[1]) {
             case "+":
@@ -147,13 +152,13 @@ public class PanelPrincipal extends JPanel implements ActionListener {
             case "*":
                 areaTexto.setText(String.valueOf(dato1 * dato2));
                 break;
-            
+
         }
         contador = 0;
         operandos[0] = areaTexto.getText();
         return resultado = Double.parseDouble(areaTexto.getText());
     }
-    
+
     private void mostrarTexto() {
         String texto1, texto2, texto3;
         texto1 = operandos[0];
@@ -168,16 +173,23 @@ public class PanelPrincipal extends JPanel implements ActionListener {
         if (texto3 == null) {
             texto3 = "";
         }
-        
+
         areaTexto.setText(texto1 + texto2 + texto3);
-        
+
     }
-    
+
     private void presionarC() {
         operandos[0] = null;
         operandos[1] = null;
         operandos[2] = null;
         contador = 0;
-        
+
     }
+
+   
+
+    
+    
+     
+
 }
