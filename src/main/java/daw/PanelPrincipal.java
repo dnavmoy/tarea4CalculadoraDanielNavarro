@@ -20,15 +20,15 @@ public class PanelPrincipal extends JPanel implements ActionListener {
     
     private PanelBotones botonera;
     private JTextArea areaTexto;
-    private int tipoOperacion;
+    //private int tipoOperacion;
     private String[] operandos = new String[3];
     private static int contador;
-    private static String operador;
+    //private static String operador;
     private static double resultado;
     
     public PanelPrincipal() {
         initComponents();
-        tipoOperacion = -1; // No hay operaciones en la calculadora
+        //tipoOperacion = -1; // No hay operaciones en la calculadora
         contador = 0;
     }
     

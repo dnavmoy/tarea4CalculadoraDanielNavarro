@@ -36,9 +36,26 @@ public class PanelBotones extends JPanel{
         
         this.setLayout(new GridLayout(4, 4));
         
-        for (JButton boton: grupoBotones){
-            this.add(boton);
-        }
+        this.add(grupoBotones[7]);
+        this.add(grupoBotones[8]);
+        this.add(grupoBotones[9]);
+        this.add(grupoBotones[13]);
+        this.add(grupoBotones[4]);
+        this.add(grupoBotones[5]);
+        this.add(grupoBotones[6]);
+        this.add(grupoBotones[12]);
+        this.add(grupoBotones[1]);
+        this.add(grupoBotones[2]);
+        this.add(grupoBotones[3]);
+        this.add(grupoBotones[11]);
+        this.add(grupoBotones[14]);
+        this.add(grupoBotones[0]);
+        this.add(grupoBotones[15]);
+        this.add(grupoBotones[10]);
+//        
+//        for (JButton boton: grupoBotones){
+//            this.add(boton);
+//        }
         
         
        
