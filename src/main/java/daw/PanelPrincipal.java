@@ -56,7 +56,12 @@ public class PanelPrincipal extends JPanel implements ActionListener {
         areaTexto.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
+               
                 char tecla=e.getKeyChar();
+                System.out.println(tecla);
+                
+                
+                    
             switch (tecla){
                 case '1':
                 botonera.getBoton(1).doClick();
@@ -89,13 +94,19 @@ public class PanelPrincipal extends JPanel implements ActionListener {
                 botonera.getBoton(0).doClick();
                 break;
                 case '=':
-                botonera.getBoton(10).doClick();
+                botonera.getBoton(14).doClick();
                 break;
                 case '-':
                 botonera.getBoton(11).doClick();
                 break;
                 case '+':
-                botonera.getBoton(1).doClick();
+                botonera.getBoton(10).doClick();
+                break;
+                case '*':
+                botonera.getBoton(12).doClick();
+                break;
+                case '/':
+                botonera.getBoton(13).doClick();
                 break;
             }
 //              
@@ -103,7 +114,9 @@ public class PanelPrincipal extends JPanel implements ActionListener {
 
             @Override
             public void keyPressed(KeyEvent e) {
-
+                 if(e.getExtendedKeyCode()==KeyEvent.VK_ENTER) {
+                botonera.getBoton(14).doClick();
+                }
             }
 
             @Override
