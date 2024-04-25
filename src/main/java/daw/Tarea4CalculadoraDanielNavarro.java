@@ -4,6 +4,9 @@
 
 package daw;
 
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 
 /**
@@ -20,9 +23,27 @@ public class Tarea4CalculadoraDanielNavarro {
     	frame.setVisible(true);
     	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     	frame.pack();
-        
+        frame.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                
+                System.out.println("typed");
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                System.out.println("pressed");
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                System.out.println("released");
+            }
+        });
    	 
 	}
+    
+    
 
     }
 

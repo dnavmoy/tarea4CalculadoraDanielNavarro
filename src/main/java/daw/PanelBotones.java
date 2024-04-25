@@ -6,6 +6,8 @@ package daw;
 
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -13,7 +15,7 @@ import javax.swing.JPanel;
  *
  * @author daniel
  */
-public class PanelBotones extends JPanel{
+public class PanelBotones extends JPanel {
     
     JButton[] grupoBotones = new JButton[16];
     
@@ -52,6 +54,26 @@ public class PanelBotones extends JPanel{
         this.add(grupoBotones[0]);
         this.add(grupoBotones[15]);
         this.add(grupoBotones[10]);
+        
+       grupoBotones[0].addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                grupoBotones[0].doClick();
+                
+                           
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+            }
+        });
+       
 //        
 //        for (JButton boton: grupoBotones){
 //            this.add(boton);
@@ -65,4 +87,10 @@ public class PanelBotones extends JPanel{
      public JButton[] getgrupoBotones(){
     		return grupoBotones;
 	}  
+     
+     public JButton getBoton(int id){
+         return grupoBotones[id];
+     }
+     
+  
 }
